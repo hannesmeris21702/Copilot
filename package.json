@@ -1,0 +1,47 @@
+{
+  "name": "cetus-liquidity-rebalance-bot",
+  "version": "1.0.0",
+  "description": "Production-ready Cetus CLMM liquidity rebalance bot for the Sui network",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "jest --runInBand",
+    "test:coverage": "jest --runInBand --coverage",
+    "lint": "eslint 'src/**/*.ts' 'tests/**/*.ts'"
+  },
+  "keywords": ["sui", "cetus", "clmm", "defi", "liquidity", "rebalance"],
+  "license": "MIT",
+  "dependencies": {
+    "@cetusprotocol/cetus-sui-clmm-sdk": "^3.7.0",
+    "@mysten/sui": "^1.18.0",
+    "axios": "^1.6.7",
+    "bignumber.js": "^9.1.2",
+    "dotenv": "^16.4.5",
+    "js-yaml": "^4.1.0",
+    "pino": "^8.21.0",
+    "pino-pretty": "^11.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^20.11.30",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "eslint": "^8.57.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testMatch": ["**/tests/**/*.test.ts"],
+    "collectCoverageFrom": ["src/**/*.ts"]
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

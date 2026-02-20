@@ -1,0 +1,69 @@
+# ──────────────────────────────────────────────
+# Cetus Liquidity Rebalance Bot – Example Config
+# Copy to config/config.yaml and fill in values.
+# Environment variables override these settings.
+# ──────────────────────────────────────────────
+
+# Sui RPC endpoint
+suiRpcUrl: "https://fullnode.mainnet.sui.io:443"
+
+# Wallet – use one of these two options
+# keystorePath: "/path/to/sui.keystore"
+# mnemonic: ""  # 24-word BIP-39 mnemonic (prefer .env)
+
+walletAddress: "0xYOUR_WALLET_ADDRESS"
+
+# Pool to monitor (Cetus CLMM)
+poolId: "0xYOUR_POOL_ID"
+
+# Optional: specific position to manage.
+# If omitted, the bot auto-discovers the first open position.
+# positionId: "0xYOUR_POSITION_ID"
+
+# Token types (move type tags)
+tokenAType: "0x2::sui::SUI"
+tokenBType: "0x5d4b302506645c37ff133b98c4b50a4ae3ec4d..."  # replace with actual type
+
+# ── Strategy ───────────────────────────────────
+# rebalanceMode: price_band | drift
+rebalanceMode: "price_band"
+
+# Price band percentage (±%)
+# e.g. 1.5 means ±1.5% around current price
+priceBandPct: 1.5
+
+# Drift trigger (%)
+# Rebalance if price drifts more than X% from range center
+driftTriggerPct: 0.5
+
+# Minimum seconds between rebalances
+minIntervalSeconds: 60
+
+# Slippage tolerance in basis points (50 = 0.5%)
+slippageBps: 50
+
+# ── Safety ─────────────────────────────────────
+# Max gas budget in MIST (1 SUI = 1_000_000_000 MIST)
+gasBudget: 500000000
+
+maxRetries: 3
+
+# Dry-run mode: true = simulate only, no tx broadcast (default: true)
+dryRun: true
+
+# Confirm: must be true to execute live transactions
+confirm: false
+
+# ── Observability ──────────────────────────────
+# Telegram webhook URL (optional)
+# Format: https://api.telegram.org/bot<TOKEN>/sendMessage?chat_id=<CHAT_ID>
+# telegramWebhook: ""
+
+logLevel: "info"
+
+# ── Cetus Package IDs ──────────────────────────
+# These are fetched automatically by the SDK.
+# Override here only if you are using a fork or custom deployment.
+# cetusPackageIds:
+#   clmmConfig: "0x..."
+#   integratePkg: "0x..."
